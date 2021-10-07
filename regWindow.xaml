@@ -1,0 +1,221 @@
+﻿<Window x:Class="Bondarenko_LibraryDataBase.regWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bondarenko_LibraryDataBase"
+        mc:Ignorable="d"
+        Title="LibraryDataBase" Height="600" Width="1000"
+        Icon="./Content/icon.png"
+        ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterScreen">
+    
+    
+    <Grid Background="#1E2A38">
+
+        <!--Разбиение на строки и колонки-->
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="75"/>
+            <RowDefinition/>
+            <RowDefinition Height="70"/>
+
+        </Grid.RowDefinitions>
+
+        <!--Шапка страницы-->
+        <Border BorderThickness="0,0,0,5"
+                BorderBrush="Gray"
+                Grid.Row="0">
+
+            <StackPanel Orientation="Horizontal">
+
+                <Label Content="Бибилиотека им. Генды"
+                       FontSize="36"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Margin="5,5,0,5"
+                       FontWeight="SemiBold"
+                       Foreground="White"/>
+
+                <Image Source="./Content/icon.png"
+                       Width="60"
+                       Height="60"
+                       Margin="5,5,0,5"/>
+
+            </StackPanel>
+
+
+
+        </Border>
+
+        <!--Основа-->
+        <Grid Background="#38495E"
+                Grid.Row="1">
+
+            <StackPanel Orientation="Vertical">
+
+                <!--Login-->
+                <StackPanel Orientation="Horizontal" Margin="30,10,10,10">
+
+                    <Label Content="Login      "
+                               Grid.Column="0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0,0,79,0"
+                               FontSize="22"
+                               Foreground="White"/>
+
+                    <TextBox Grid.Row="0"
+                                 Grid.Column="1"
+                                 Width="500"
+                                 Height="50"
+                                 HorizontalAlignment="Left"
+                                 Margin="20,0,0,0"
+                                 FontSize="20"
+                                 FontWeight="Light"
+                             x:Name="LoginBox"/>
+
+                </StackPanel>
+
+                <!--Pass-->
+                <StackPanel Orientation="Horizontal" Margin="30,10,10,10">
+                    
+                    <Label Content="Password"
+                               Grid.Column="0"
+                               Grid.Row="1"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0,0,79,0"
+                               FontSize="22"
+                               Foreground="White"/>
+
+                    <PasswordBox Grid.Row="1"
+                                     Grid.Column="1"
+                                     Width="500"
+                                     Height="50"
+                                     HorizontalAlignment="Left"
+                                     Margin="20,0,0,0"
+                                     FontSize="20"
+                                     FontWeight="Light"
+                                     PasswordChar="*"
+                                     MaxLength="10"
+                                 x:Name="PassBox"/>
+
+                </StackPanel>
+
+                <!--Pass again-->
+                <StackPanel Orientation="Horizontal" Margin="30,10,10,10">
+
+                    <Label Content="Password again"
+                               Grid.Column="0"
+                               Grid.Row="1"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0,0,20,0"
+                               FontSize="22"
+                               Foreground="White"/>
+
+                    <PasswordBox Grid.Row="1"
+                                     Grid.Column="1"
+                                     Width="500"
+                                     Height="50"
+                                     HorizontalAlignment="Left"
+                                     Margin="20,0,0,0"
+                                     FontSize="20"
+                                     FontWeight="Light"
+                                     PasswordChar="*"
+                                     MaxLength="10"
+                                 x:Name="AgPassBox"/>
+
+                </StackPanel>
+                
+                <!--Question-->
+                <StackPanel Orientation="Horizontal" Margin="30,10,10,10">
+
+                    <Label Content="Question"
+                               Grid.Column="0"
+                               Grid.Row="1"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0,0,83,0"
+                               FontSize="22"
+                               Foreground="White"/>
+
+                    <ComboBox Grid.Row="1"
+                              Grid.Column="1"
+                              Width="500"
+                              Height="50"
+                              HorizontalAlignment="Left"
+                              Margin="20,0,0,0"
+                              FontSize="20"
+                              FontWeight="Light"
+                              x:Name="QuestionBox">
+
+                        <ComboBoxItem>
+                            <Label Content="Имя домашнего животного?"/>
+                        </ComboBoxItem>
+
+                        <ComboBoxItem>
+                            <Label Content="Девичья фамилия матери?"/>
+                        </ComboBoxItem>
+                        
+                    </ComboBox>
+
+                </StackPanel>
+                
+                <!--Answer-->
+                <StackPanel Orientation="Horizontal" Margin="30,10,10,10">
+
+                    <Label Content="Answer    "
+                               Grid.Column="0"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Margin="0,0,77,0"
+                               FontSize="22"
+                               Foreground="White"/>
+
+                    <TextBox Grid.Row="0"
+                                 Grid.Column="1"
+                                 Width="500"
+                                 Height="50"
+                                 HorizontalAlignment="Left"
+                                 Margin="20,0,0,0"
+                                 FontSize="20"
+                                 FontWeight="Light"
+                             x:Name="AnswerBox"/>
+
+                </StackPanel>
+
+            </StackPanel>
+            
+        </Grid>
+
+        <!--Кнопки-->
+        <Border Grid.Row="2"
+                BorderThickness="0,2,0,0"
+                BorderBrush="Gray">
+
+            <StackPanel Orientation="Horizontal">
+
+                <Button Content="Назад"
+                        Width="200"
+                        Height="50"
+                        Margin="10"
+                        FontSize="25"
+                        Click="Back_Button"/>
+
+                <Button Content="Подтвердить"
+                        Width="200"
+                        Height="50"
+                        Margin="10"
+                        FontSize="25"
+                        Click="AcceptButton"/>
+
+            </StackPanel>
+
+        </Border>
+
+    </Grid>
+    <!--Общий грид-->
+    
+</Window>
