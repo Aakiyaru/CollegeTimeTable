@@ -121,7 +121,7 @@ namespace Bondarenko_LibraryDataBase
         //БД
         private void DataBase(TextBox LoginBox, PasswordBox PassBox)
         {
-            string connectionString = @"Data Source=192.168.10.151;Initial Catalog=253_Bondarenko;Integrated Security=false;User ID=wsr-5;Password=f9Eb65897577";
+            string connectionString = @"Data Source=(localDB);Initial Catalog=(DBName);Integrated Security=false;User ID=(UserID);Password=(Password)";
             string SqlExpression = "" +
                 "SELECT login " +
                 "FROM LUser " +
