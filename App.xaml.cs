@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Bondarenko_LibraryDataBase
+namespace TimeTable
 {
     /// <summary>
     /// Interaction logic for App.xaml

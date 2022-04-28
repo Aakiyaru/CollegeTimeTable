@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Bondarenko_LibraryDataBase
+namespace TimeTable
 {
     /// <summary>
     /// Логика взаимодействия для TimeTable_Tutori_Main.xaml

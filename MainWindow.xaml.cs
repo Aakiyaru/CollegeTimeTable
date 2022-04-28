@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Bondarenko_LibraryDataBase
+namespace TimeTable
 {
     public partial class MainWindow : Window
     {
