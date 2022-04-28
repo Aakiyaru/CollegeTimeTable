@@ -4,143 +4,101 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bondarenko_LibraryDataBase"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="LibraryDataBase" Height="600" Width="1000"
+        Title="TimeTable" Height="500" Width="350"
         Icon="./Content/icon.png"
-        ResizeMode="CanResizeWithGrip"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 
     <!--Общий грид-->
-    <Grid Background="#1E2A38">
+    <Grid>
 
-        <!--Разбиение на строки и колонки-->
-        <Grid.RowDefinitions>
+        <Rectangle Height="280"
+              Width="350"
+              VerticalAlignment="Top"
+              HorizontalAlignment="Center">
 
-            <RowDefinition Height="75"/>
-            <RowDefinition/>
-            <RowDefinition Height="70"/>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2281D1"/>
+                    <GradientStop Color="#FF34268A" Offset="1"/>
+                    <GradientStop Color="#FF33288B" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+            
+        </Rectangle>
 
-        </Grid.RowDefinitions>
+        <Image Source="./Content/icon.png"
+               Width="100"
+               Height="100"
+               VerticalAlignment="Top"
+               Margin="20"/>
 
-        <!--Шапка страницы-->
-        <Border BorderThickness="0,0,0,5"
-                BorderBrush="Gray"
-                Grid.Row="0" Grid.ColumnSpan="2">
+        <Rectangle Width="280"
+                   Height="240"
+                   Fill="White"
+                   VerticalAlignment="Bottom"
+                   Margin="0,100">
 
-            <StackPanel Orientation="Horizontal">
+            <Rectangle.Effect>
+                <DropShadowEffect Color="#FFBBBBBB"
+                                  Direction="0"
+                                  BlurRadius="15"
+                                  RenderingBias="Quality"
+                                  ShadowDepth="1"/>
+            </Rectangle.Effect>
+            
+        </Rectangle>
 
-                <Label Content="Бибилиотека им. Генды"
-                       FontSize="36"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
-                       Margin="5,5,0,5"
-                       FontWeight="SemiBold"
-                       Foreground="White"/>
+        <Grid Width="280"
+              Height="240"
+              VerticalAlignment="Bottom"
+              Margin="0,100">
+            <TextBlock Text="LOGIN"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Margin="5"
+                       Foreground="Gray"
+                       FontSize="18"/>
+            <StackPanel VerticalAlignment="Center" Margin="10">
+                <TextBox materialDesign:HintAssist.Hint="Email"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Margin="0,10"
+                         FontFamily="Champagne &amp; Limousines"
+                         FontSize="18"
+                         x:Name="LoginBox"/>
 
-                <Image Source="./Content/icon.png"
-                       Width="60"
-                       Height="60"
-                       Margin="5,5,0,5"/>
+                <PasswordBox Margin="0,10"
+                             materialDesign:HintAssist.Hint="Пароль"
+                             FontFamily="Champagne &amp; Limousines"
+                             FontSize="18"
+                             x:Name="PassBox"/>
+
+                <CheckBox Content="Подключение из дома"
+                          x:Name="HomeBox"
+                          Margin="0,10"
+                          FontFamily="Champagne &amp; Limousines"
+                          Foreground="Gray"/>
 
             </StackPanel>
-
-
-
-        </Border>
-
-        <!--Логин/пароль-->
-        <Grid Background="#38495E"
-                Grid.Row="1" Grid.ColumnSpan="2">
-
-            <!--Форма логина и пароля-->
-            <Grid Grid.Row="0">
-
-                <StackPanel Orientation="Vertical">
-
-                    <StackPanel Orientation="Horizontal"
-                                Margin="30">
-
-                        <Label Content="Login      "
-                               Grid.Column="0"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0,0,20,0"
-                               FontSize="22"
-                               Foreground="White"/>
-
-                        <TextBox Grid.Row="0"
-                                 Grid.Column="1"
-                                 Width="500"
-                                 Height="70"
-                                 HorizontalAlignment="Left"
-                                 Margin="20,0,0,0"
-                                 FontSize="30"
-                                 FontWeight="Light"
-                                 x:Name="LoginBox"/>
-
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal"
-                                Margin="30">
-
-                        <Label Content="Password"
-                               Grid.Column="0"
-                               Grid.Row="1"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Center"
-                               Margin="0,0,20,0"
-                               FontSize="22"
-                               Foreground="White"/>
-
-                        <PasswordBox Grid.Row="1"
-                                     Grid.Column="1"
-                                     Width="500"
-                                     Height="70"
-                                     HorizontalAlignment="Left"
-                                     Margin="20,0,0,0"
-                                     FontSize="30"
-                                     FontWeight="Light"
-                                     PasswordChar="*"
-                                     MaxLength="10"
-                                     x:Name="PassBox"/>
-
-                    </StackPanel>
-
-                </StackPanel>
-
-            </Grid>
-
         </Grid>
 
-        <!--Кнопки-->
-        <Border Grid.Row="2"
-                BorderThickness="0,2,0,0"
-                BorderBrush="Gray">
+        <Button Width="150"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="0,55"
+                Content="ВОЙТИ"
+                Click="Enter_Button"
+                x:Name="EnterButton"/>
 
-            <StackPanel Orientation="Horizontal">
-                <Button Width="200"
-                        Height="50"
-                        Margin="10"
-                        Content="Регситрация"
-                        FontSize="25" Click="Reg_Button"/>
-
-                <Button Width="200"
-                        Height="50"
-                        Margin="10"
-                        Content="Забыл пароль"
-                        FontSize="25"
-                        Click="Forgot_Button"/>
-
-                <Button Width="200"
-                        Height="50"
-                        Margin="10"
-                        Content="Вход"
-                        FontSize="25"
-                        Click="Enter_Button"
-                        x:Name="EnterButton"/>
-            </StackPanel>
-
-        </Border>
+        <TextBlock Text="Регистрация или забыли пароль?"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   Margin="0,20"
+                   Foreground="Gray"
+                   Cursor="Hand"
+                   MouseDown="Forgot_Button"/>
 
     </Grid>
     <!--Общий грид-->
