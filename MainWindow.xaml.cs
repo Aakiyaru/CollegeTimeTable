@@ -127,13 +127,13 @@ namespace TimeTable
                     {
 
                         case "pup":
-                            TimeTable_Main TT_Pup_Main = new TimeTable_Main(Role, login, connectionString);
+                            PupilTimeTable TT_Pup_Main = new PupilTimeTable(Role, login, connectionString);
                             TT_Pup_Main.Show();
                             Close();
                             break;
 
                         case "tut":
-                            TimeTable_Tutori_Main TT_Tut_Main = new TimeTable_Tutori_Main(Role, login, connectionString);
+                            TutorTimeTable TT_Tut_Main = new TutorTimeTable(Role, login, connectionString);
                             TT_Tut_Main.Show();
                             Close();
                             break;
