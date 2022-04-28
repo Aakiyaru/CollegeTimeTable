@@ -100,11 +100,11 @@ namespace TimeTable
             string connectionString = "";
             if (HomeBox.IsChecked == true)
             {
-                connectionString = @"Data Source=DESKTOP-U73FH3H\MSSQLSERVER01;Initial Catalog=TimeTable;Integrated Security=true;";
+                connectionString = @" private information ";
             }
             else
             {
-                connectionString = @"Data Source=192.168.10.151;Initial Catalog=253_Bondarenko;Integrated Security=false;User ID=wsr-5;Password=f9Eb65897577";
+                connectionString = @" private information ";
             }
             
             string SqlExpression = "" +
