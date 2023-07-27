@@ -1,7 +1,9 @@
 ﻿using System.Data.SqlClient;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using TimeTable.DataBase.Models;
 
 namespace TimeTable
 {
@@ -37,7 +39,14 @@ namespace TimeTable
                 }
                 else
                 {
-                    DataBase(LoginBox, PassBox);
+                    if (DataBase(LoginBox, PassBox))
+                    {
+                        MessageBox.Show("OK");
+                    }
+                    else
+                    {
+                        MessageBox.Show("NO");
+                    }
                 }
             }
         }
@@ -95,59 +104,61 @@ namespace TimeTable
 
 
         //БД
-        private void DataBase(TextBox LoginBox, PasswordBox PassBox)
+        private bool DataBase(TextBox LoginBox, PasswordBox PassBox)
         {
-            string connectionString = "";
-            if (HomeBox.IsChecked == true)
+            using (ApplicationContext db = new ApplicationContext())
             {
-                connectionString = @" private information ";
-            }
-            else
-            {
-                connectionString = @" private information ";
-            }
-            
-            string SqlExpression = "" +
-                "SELECT user_id " +
-                "FROM LUser " +
-                $"WHERE login = '{LoginBox.Text}' and password = '{PassBox.Password}'";
-
-            using(SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(SqlExpression, connection);
-                object count = command.ExecuteScalar();
-
-                if (count != null)
+                var users = db.users.ToList();
+                foreach (User usr in users)
                 {
-                    int login = (int)count;
-                    string Role = RoleCheck(login, connection);
-
-                    switch (Role)
+                    if ((usr.Login == LoginBox.Text) && (usr.Password == PassBox.Password))
                     {
-
-                        case "pup":
-                            PupilTimeTable TT_Pup_Main = new PupilTimeTable(Role, login, connectionString);
-                            TT_Pup_Main.Show();
-                            Close();
-                            break;
-
-                        case "tut":
-                            TutorTimeTable TT_Tut_Main = new TutorTimeTable(Role, login, connectionString);
-                            TT_Tut_Main.Show();
-                            Close();
-                            break;
+                        return true;
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Неправильный логин или пароль", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-
-                //reader.Close();
-                connection.Close();
-                
+                return false;
             }
+            //string SqlExpression = "" +
+            //    "SELECT user_id " +
+            //    "FROM LUser " +
+            //    $"WHERE login = '{LoginBox.Text}' and password = '{PassBox.Password}'";
+
+            //using(SqlConnection connection = new SqlConnection(connectionString))
+            //{
+            //    connection.Open();
+            //    SqlCommand command = new SqlCommand(SqlExpression, connection);
+            //    object count = command.ExecuteScalar();
+
+            //    if (count != null)
+            //    {
+            //        int login = (int)count;
+            //        string Role = RoleCheck(login, connection);
+
+            //        switch (Role)
+            //        {
+
+            //            case "pup":
+            //                PupilTimeTable TT_Pup_Main = new PupilTimeTable(Role, login, connectionString);
+            //                TT_Pup_Main.Show();
+            //                Close();
+            //                break;
+
+            //            case "tut":
+            //                TutorTimeTable TT_Tut_Main = new TutorTimeTable(Role, login, connectionString);
+            //                TT_Tut_Main.Show();
+            //                Close();
+            //                break;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Неправильный логин или пароль", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    }
+
+            //    //reader.Close();
+            //    connection.Close();
+                
+            //}
         }
 
         private string RoleCheck(int login, SqlConnection connection)

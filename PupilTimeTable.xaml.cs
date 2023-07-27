@@ -5,9 +5,6 @@ using System.Windows.Controls;
 
 namespace TimeTable
 {
-    /// <summary>
-    /// Логика взаимодействия для TimeTable_Main.xaml
-    /// </summary>
     public partial class PupilTimeTable : Window
     {
         string role { get; set; }
